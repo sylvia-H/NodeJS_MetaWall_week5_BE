@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "814bc58b-f52d-4098-9178-b8cea2ebad22",
+		"name": "Hex-MetaWall_week5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12089641"
+	},
+	"item": [
+		{
+			"name": "貼文 Posts",
+			"item": [
+				{
+					"name": "取得所有貼文 Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/posts",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增單筆貼文 Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": \"Sylvia-H\",\r\n    \"content\": \"外面看起來就超冷.... 我決定回被窩繼續睡....>.<\",\r\n    \"tags\": [\"general\"],\r\n    \"image\": \"\",\r\n    \"likes\": 0,\r\n    \"comments\": 0,\r\n    \"privacy\": \"private\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/posts",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除所有貼文 Posts",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/posts",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單筆貼文 Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/posts/",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改單筆貼文 Post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"6298ccdc2f75e1bf5c347d51\",\r\n    \"author\": {\r\n        \"_id\": \"6298be0a86d7d2a709c289e4\",\r\n        \"name\": \"阿爾敏\",\r\n        \"avatar\": \"https://avatarfiles.alphacoders.com/115/115265.png\"\r\n    },\r\n    \"content\": \"各位我有一個作戰計畫...\",\r\n    \"tags\": [\r\n        \"general\"\r\n    ],\r\n    \"image\": \"https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80\",\r\n    \"likes\": 1,\r\n    \"comments\": [],\r\n    \"privacy\": \"private\",\r\n    \"createdAt\": \"2022-06-02T14:44:44.972Z\",\r\n    \"updatedAt\": \"2022-06-02T16:51:13.726Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/posts/",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用戶 Users",
+			"item": [
+				{
+					"name": "取得所有 Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增 User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"阿爾敏\",\r\n    \"email\": \"almin_test@gmail.com\",\r\n    \"avatar\": \"https://avatarfiles.alphacoders.com/115/115265.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除所有用戶 Users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單一用戶 User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/users/",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改單一用戶 User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"6298be0a86d7d2a709c289e4\",\r\n    \"name\": \"阿爾敏\",\r\n    \"email\": \"almin_test@gmail.com\",\r\n    \"avatar\": \"https://avatarfiles.alphacoders.com/115/115265.png\",\r\n    \"createdAt\": \"2022-06-02T13:41:30.949Z\",\r\n    \"updatedAt\": \"2022-06-02T13:41:30.949Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/users/",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "評論 Comments",
+			"item": [
+				{
+					"name": "取得所有評論 Comments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/comments",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增單筆評論 Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"articleID\": \"6298ccdc2f75e1bf5c347d51\",\r\n    \"author\": \"6298bb7386d7d2a709c289de\",\r\n    \"body\": \"加油～你可以的！\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/comments",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除所有評論 Comments",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/comments",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單筆評論 Comments",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/comments/",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改單筆評論 Comment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"6299d7788e41247531c5b899\",\r\n    \"articleID\": \"6298cd452f75e1bf5c347d55\",\r\n    \"author\": {\r\n        \"_id\": \"6298bb7386d7d2a709c289de\",\r\n        \"name\": \"Sylvia-H\",\r\n        \"avatar\": \"https://i.imgur.com/sM6jI9T.jpg\"\r\n    },\r\n    \"body\": \"加油～你可以的！\",\r\n    \"createdAt\": \"2022-06-03T09:42:16.882Z\",\r\n    \"updatedAt\": \"2022-06-03T09:42:16.882Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://murmuring-gorge-71971.herokuapp.com/comments/",
+							"protocol": "https",
+							"host": [
+								"murmuring-gorge-71971",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
