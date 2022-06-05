@@ -1,5 +1,5 @@
 const successHandler = require('../helper/successHandlers');
-const errorHandler = require('../helper/errorHandlers');
+const appError = require('../helper/appError');
 const Comment = require('../model/comment');
 
 const CommentController = {
@@ -11,20 +11,20 @@ const CommentController = {
     successHandler(res, comments);
   },
   async createComments(req, res) {
-    try {
-      const { articleID, author, body } = req.body;
-      if (articleID && author && body) {
-        await Comment.create({
-          articleID,
-          author,
-          body
-        });
-        CommentController.getComments(req, res);
-      } else {
-        errorHandler(res, 400, 4001);
-      }
-    } catch {
-      errorHandler(res, 400, 4002);
+    const { articleID, author, body } = req.body;
+    if (articleID && author && body) {
+      await Comment.create({
+        articleID,
+        author,
+        body,
+      });
+      CommentController.getComments(req, res);
+    } else {
+      return appError(
+        400,
+        'Bad Request Error - All required fields must be completed.',
+        next
+      );
     }
   },
   async deleteAllComments(req, res) {
@@ -32,37 +32,27 @@ const CommentController = {
     successHandler(res, comments);
   },
   async deleteComments(req, res) {
-    try {
-      const { id } = req.params;
-      await Comment.findByIdAndDelete(id)
-        .then((result) => {
-          if (result) {
-            CommentController.getComments(req, res);
-          } else {
-            errorHandler(res, 400, 4003);
-          }
-        })
-        .catch(() => errorHandler(res, 400, 4003));
-    } catch {
-      errorHandler(res, 400, 4002);
-    }
+    const { id } = req.params;
+    await Comment.findByIdAndDelete(id)
+      .then((result) => {
+        if (!result) {
+          return appError(400, 'Bad Request Error - Failed to get data', next);
+        }
+        CommentController.getComments(req, res);
+      })
+      .catch(() => appError(400, 'Bad Request Error - ID not found', next));
   },
   async editComments(req, res) {
-    try {
-      const { body } = req;
-      const { id } = req.params;
-      await Comment.findByIdAndUpdate(id, body)
-        .then((result) => {
-          if (result) {
-            CommentController.getComments(req, res);
-          } else {
-            errorHandler(res, 400, 4003);
-          }
-        })
-        .catch(() => errorHandler(res, 400, 4003));
-    } catch {
-      errorHandler(res, 400, 4002);
-    }
+    const { body } = req;
+    const { id } = req.params;
+    await Comment.findByIdAndUpdate(id, body)
+      .then((result) => {
+        if (!result) {
+          return appError(400, 'Bad Request Error - Failed to get data', next);
+        }
+        CommentController.getComments(req, res);
+      })
+      .catch(() => appError(400, 'Bad Request Error - ID not found', next));
   },
 };
 

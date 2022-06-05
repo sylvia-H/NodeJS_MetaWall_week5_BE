@@ -1,5 +1,5 @@
 const successHandler = require('../helper/successHandlers');
-const errorHandler = require('../helper/errorHandlers');
+const appError = require('../helper/appError');
 const Post = require('../model/post');
 
 const PostController = {
@@ -15,31 +15,30 @@ const PostController = {
         select: 'name avatar',
       })
       .populate({
-        path: 'comments'
+        path: 'comments',
       })
       .sort(timeSort);
     successHandler(res, posts);
   },
   async createPosts(req, res) {
-    try {
-      const { author, content, tags, image, likes, comments, privacy } =
-        req.body;
-      if (author && content) {
-        await Post.create({
-          author,
-          content,
-          tags,
-          image,
-          likes,
-          comments,
-          privacy,
-        });
-        PostController.getPosts(req, res);
-      } else {
-        errorHandler(res, 400, 4001);
-      }
-    } catch {
-      errorHandler(res, 400, 4002);
+    const { author, content, tags, image, likes, comments, privacy } = req.body;
+    if (author && content) {
+      await Post.create({
+        author,
+        content,
+        tags,
+        image,
+        likes,
+        comments,
+        privacy,
+      });
+      PostController.getPosts(req, res);
+    } else {
+      return appError(
+        400,
+        'Bad Request Error - All required fields must be completed.',
+        next
+      );
     }
   },
   async deleteAllPosts(req, res) {
@@ -47,37 +46,27 @@ const PostController = {
     successHandler(res, posts);
   },
   async deletePosts(req, res) {
-    try {
-      const { id } = req.params;
-      await Post.findByIdAndDelete(id)
-        .then((result) => {
-          if (result) {
-            PostController.getPosts(req, res);
-          } else {
-            errorHandler(res, 400, 4003);
-          }
-        })
-        .catch(() => errorHandler(res, 400, 4003));
-    } catch {
-      errorHandler(res, 400, 4002);
-    }
+    const { id } = req.params;
+    await Post.findByIdAndDelete(id)
+      .then((result) => {
+        if (!result) {
+          return appError(400, 'Bad Request Error - Failed to get data', next);
+        }
+        PostController.getPosts(req, res);
+      })
+      .catch(() => appError(400, 'Bad Request Error - ID not found', next));
   },
   async editPosts(req, res) {
-    try {
       const { body } = req;
       const { id } = req.params;
       await Post.findByIdAndUpdate(id, body)
         .then((result) => {
-          if (result) {
-            PostController.getPosts(req, res);
-          } else {
-            errorHandler(res, 400, 4003);
+          if (!result) {
+            return appError(400, 'Bad Request Error - Failed to get data', next);
           }
+          PostController.getPosts(req, res);
         })
-        .catch(() => errorHandler(res, 400, 4003));
-    } catch {
-      errorHandler(res, 400, 4002);
-    }
+        .catch(() => appError(400, 'Bad Request Error - ID not found', next));
   },
 };
 
