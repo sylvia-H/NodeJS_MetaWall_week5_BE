@@ -27,11 +27,11 @@ const PostController = {
       await Post.create({
         author,
         content,
-        tags: [req.body.tags || 'general'],
-        image: [req.body.image || ''],
-        likes: [req.body.likes || 0],
-        comments: [req.body.comment || ''],
-        privacy: [req.body.privacy || 'private'],
+        tags: req.body.tags || 'general',
+        image: req.body.image || '',
+        likes: req.body.likes || 0,
+        comments: req.body.comment || '',
+        privacy: req.body.privacy || 'private',
       });
       PostController.getPosts(req, res);
     } else {
